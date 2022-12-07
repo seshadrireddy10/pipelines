@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Docker images ') {
             steps {
-                sh 'docker run -it hello'
+                sh 'docker run -it hello '
             }
         }
         stage('Docker stop images ') {
