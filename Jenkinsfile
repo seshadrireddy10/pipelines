@@ -14,22 +14,22 @@ pipeline {
         }
         stage('Build Docker images ') {
             steps {
-                sh 'docker build -t Hello .'
+                sh 'docker build -t hello .'
             }
         }
         stage('Run Docker images ') {
             steps {
-                sh 'docker run -it Hello'
+                sh 'docker run -it hello'
             }
         }
         stage('Docker stop images ') {
             steps {
-                sh 'docker stop  Hello'
+                sh 'docker stop  hello'
             }
         }
         stage('Remove Docker images ') {
             steps {
-                sh 'docker rmi Hello'
+                sh 'docker rmi hello'
             }
         }
 
