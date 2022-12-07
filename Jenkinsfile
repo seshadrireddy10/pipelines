@@ -2,30 +2,36 @@ pipeline {
     agent any
 
     stages {
-        stage('devo') {
+        stage('Run java clases') {
             steps {
-                echo 'devo'
+                sh 'javac Hello.java'
             }
         }
-        stage('test') {
+        stage('Build jar file') {
             steps {
-                echo 'test'
+                sh 'jar cmf Hello.mf Hello.jar Hello.class Hello.java'
             }
         }
-        stage('qa') {
+        stage('Build Docker images ') {
             steps {
-                echo 'qa'
+                sh 'docker build -t Hello .'
             }
         }
-        stage('prod') {
+        stage('Run Docker images ') {
             steps {
-                echo 'prod'
+                sh 'docker run -it Hello'
             }
         }
-        stage('nonprod') {
+        stage('Docker stop images ') {
             steps {
-                echo 'non prod'
+                sh 'docker stop  Hello'
             }
         }
+        stage('Remove Docker images ') {
+            steps {
+                sh 'docker rmi Hello'
+            }
+        }
+
     }
 }
