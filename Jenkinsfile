@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Docker images ') {
             steps {
-                sh 'docker run -it hello '
+                sh 'docker run -i --name hello  hello:latest '
             }
         }
         stage('Docker stop images ') {
@@ -29,9 +29,10 @@ pipeline {
         }
         stage('Remove Docker images ') {
             steps {
-                sh 'docker rmi hello'
+                sh 'docker rm hello'
             }
         }
 
     }
 }
+
