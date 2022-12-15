@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    triggers {
-        cron('5 * * * *')
-    }
+//     triggers {
+//         cron('5 * * * *')
+//     }
 
     stages {
         stage('Run java clases') {
